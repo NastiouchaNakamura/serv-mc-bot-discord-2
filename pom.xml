@@ -27,7 +27,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/NastiouchaNakamura/discord-bot-launcher</url>
+            <url>https://maven.pkg.github.com/bde-tribu-terre/serv-mc-bot-discord-2</url>
         </repository>
     </distributionManagement>
 
