@@ -16,6 +16,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Bdd implements AutoCloseable {
+    // Constante
+    private final int MAIN_WORLD_ID = 7;
+
     // Attributs
     private final Connection connection;
     private List<Joueur> joueurs;
@@ -264,9 +267,10 @@ public class Bdd implements AutoCloseable {
 
         // Ajout de la région dans Worldguard.
         preparedStatement = this.connection.prepareStatement(
-                "INSERT INTO worldguard_region VALUES (?, 1, 'cuboid', 2, 'ville');"
+                "INSERT INTO worldguard_region VALUES (?, ?, 'cuboid', 2, 'ville');"
         );
         preparedStatement.setString(1, equipe.getId());
+        preparedStatement.setInt(2, MAIN_WORLD_ID);
         preparedStatement.executeUpdate();
 
         // Récupération de l'ID de groupe Worldguard généré.
@@ -283,29 +287,32 @@ public class Bdd implements AutoCloseable {
 
         // Connexion de la région à l'équipe.
         preparedStatement = this.connection.prepareStatement(
-                "INSERT INTO worldguard_region_groups VALUES (?, 1, ?, 1);"
+                "INSERT INTO worldguard_region_groups VALUES (?, ?, ?, 1);"
         );
         preparedStatement.setString(1, equipe.getId());
-        preparedStatement.setInt(2, group_id);
+        preparedStatement.setInt(2, MAIN_WORLD_ID);
+        preparedStatement.setInt(3, group_id);
         preparedStatement.executeUpdate();
 
         // Ajout des coordonnées de la région.
         preparedStatement = this.connection.prepareStatement(
-                "INSERT INTO worldguard_region_cuboid VALUES (?, 1, ?, 0, ?, ?, 256, ?);"
+                "INSERT INTO worldguard_region_cuboid VALUES (?, ?, ?, 0, ?, ?, 256, ?);"
         );
         preparedStatement.setString(1, equipe.getId());
-        preparedStatement.setInt(2, equipe.getRegion().getX1());
-        preparedStatement.setInt(3, equipe.getRegion().getZ1());
-        preparedStatement.setInt(4, equipe.getRegion().getX2());
-        preparedStatement.setInt(5, equipe.getRegion().getZ2());
+        preparedStatement.setInt(2, MAIN_WORLD_ID);
+        preparedStatement.setInt(3, equipe.getRegion().getX1());
+        preparedStatement.setInt(4, equipe.getRegion().getZ1());
+        preparedStatement.setInt(5, equipe.getRegion().getX2());
+        preparedStatement.setInt(6, equipe.getRegion().getZ2());
         preparedStatement.executeUpdate();
 
         // Ajout des paramètres Worldguard de la région.
         preparedStatement = this.connection.prepareStatement(
-                "INSERT INTO worldguard_region_flag (region_id, world_id, flag, value) VALUES (?, 1, 'greeting-title', ?);"
+                "INSERT INTO worldguard_region_flag (region_id, world_id, flag, value) VALUES (?, ?, 'greeting-title', ?);"
         );
         preparedStatement.setString(1, equipe.getId());
-        preparedStatement.setString(2, "|-\n  " + equipe.getNom() + "\n  " + equipe.getSlogan() + "\n");
+        preparedStatement.setInt(2, MAIN_WORLD_ID);
+        preparedStatement.setString(3, "|-\n  " + equipe.getNom() + "\n  " + equipe.getSlogan() + "\n");
         preparedStatement.executeUpdate();
 
         // Paramétrage des autorisés.
@@ -341,10 +348,11 @@ public class Bdd implements AutoCloseable {
 
             // Ajout de l'autorisé.
             preparedStatement = this.connection.prepareStatement(
-                    "INSERT INTO worldguard_region_players (region_id, world_id, user_id, owner) VALUES (?, 1, ?, 0);"
+                    "INSERT INTO worldguard_region_players (region_id, world_id, user_id, owner) VALUES (?, ?, ?, 0);"
             );
             preparedStatement.setString(1, equipe.getId());
-            preparedStatement.setInt(2, idJoueur);
+            preparedStatement.setInt(2, MAIN_WORLD_ID);
+            preparedStatement.setInt(3, idJoueur);
             preparedStatement.executeUpdate();
         }
 
@@ -478,10 +486,11 @@ public class Bdd implements AutoCloseable {
 
             // Ajout de l'autorisé.
             preparedStatement = this.connection.prepareStatement(
-                    "INSERT INTO worldguard_region_players (region_id, world_id, user_id, owner) VALUES (?, 1, ?, 0);"
+                    "INSERT INTO worldguard_region_players (region_id, world_id, user_id, owner) VALUES (?, ?, ?, 0);"
             );
             preparedStatement.setString(1, currentEquipe.getId());
-            preparedStatement.setInt(2, idJoueur);
+            preparedStatement.setInt(2, MAIN_WORLD_ID);
+            preparedStatement.setInt(3, idJoueur);
             preparedStatement.executeUpdate();
         }
 

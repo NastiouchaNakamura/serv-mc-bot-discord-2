@@ -21,7 +21,7 @@
 
     <groupId>fr.bde_tribu_terre</groupId>
     <artifactId>serv-mc-bot-discord-2</artifactId>
-    <version>2.0a</version>
+    <version>2.1a</version>
 
     <distributionManagement>
         <repository>
