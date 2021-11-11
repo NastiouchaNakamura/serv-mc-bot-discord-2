@@ -1,3 +1,4 @@
 # Project exclude paths
 /target/
 .idea/
+src/main/java/fr/bde_tribu_terre/discord/mcbot/Main.java
