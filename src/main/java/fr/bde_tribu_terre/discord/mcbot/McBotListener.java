@@ -93,6 +93,7 @@ public class McBotListener extends AbstractBaseListener {
                 case "echo" -> new Echo(event, bdd).action();
                 case "fonder" -> new Fonder(event, bdd).action();
                 case "informations" -> new Informations(event, bdd).action();
+                case "integrer" -> new Integrer(event, bdd).action();
                 case "interdire" -> new Interdire(event, bdd).action();
                 case "liste" -> new Liste(event, bdd).action();
                 case "modifier" -> new Modifier(event, bdd).action();
