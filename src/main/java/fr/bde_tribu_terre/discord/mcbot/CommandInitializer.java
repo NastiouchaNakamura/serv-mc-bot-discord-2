@@ -50,12 +50,6 @@ public class CommandInitializer {
                                 "Fonde une équipe rassemblant les 2 membres : le lanceur de la commande et la personne identifiée."
                         ).addOptions(
                                 new OptionData(
-                                        OptionType.USER,
-                                        "coequipier",
-                                        "Mention Discord du coéquipier avec lequel fonder l'équipe.",
-                                        true
-                                ),
-                                new OptionData(
                                         OptionType.STRING,
                                         "identifiant",
                                         "Identifiant de l'équipe, NE PEUT PAS ÊTRE CHANGÉ, qui identifiera l'équipe dans les commandes.",

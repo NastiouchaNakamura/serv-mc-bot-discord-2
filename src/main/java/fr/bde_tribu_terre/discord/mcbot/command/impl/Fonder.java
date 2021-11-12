@@ -25,7 +25,6 @@ public class Fonder extends CommandAction {
     public void action() {
         try {
             // Variable argument.
-            User coequipier = this.getEvent().getOption("coequipier").getAsUser();
             String identifiant = this.getEvent().getOption("identifiant").getAsString();
             String nom = this.getEvent().getOption("nom").getAsString();
             String couleur = this.getEvent().getOption("couleur").getAsString();
@@ -86,38 +85,6 @@ public class Fonder extends CommandAction {
                 return;
             }
 
-            // Trouver le deuxième membre.
-            Joueur membre2 = this.getBdd().getJoueurs().getJoueurByDiscordId(coequipier.getId());
-            if (membre2 == null) {
-                this.sendFailure(
-                        "Joueur non inscrit",
-                        "Il n'y a pas de compte Minecraft lié au compte Discord " +
-                                coequipier.getAsTag() +
-                                ". Veuillez vous connecter au serveur Minecraft pour procéder à cette étape."
-                );
-                return;
-            }
-
-            // Est-ce que le membre 2 a déjà une équipe ?
-            Equipe equipe2 = this.getBdd().getEquipes().getEquipeByMembre(membre2);
-            if (equipe2 != null) {
-                this.sendFailure(
-                        "Joueur déjà membre d'une équipe",
-                        membre2.getDiscordTag(this.getEvent().getJDA()) +
-                                ", vous êtes déjà membre de l'équipe \"" + equipe2.getNom() + "\"."
-                );
-                return;
-            }
-
-            // Est-ce que les deux joueurs sont identiques ?
-            if (membre1.equals(membre2)) {
-                this.sendFailure(
-                        "Auteur et coéquipier identiques",
-                        "Vous ne pouvez pas être votre propre coéquipier."
-                );
-                return;
-            }
-
             // Vérification que l'ID n'existe pas déjà.
             Equipe equipeId = this.getBdd().getEquipes().getEquipeById(identifiant);
             if (equipeId != null) {
@@ -152,7 +119,6 @@ public class Fonder extends CommandAction {
             // Création de la nouvelle équipe.
             List<Joueur> membres = new ArrayList<>();
             membres.add(membre1);
-            membres.add(membre2);
 
             Equipe newEquipe = new Equipe(
                     identifiant.toLowerCase(),
