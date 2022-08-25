@@ -3,12 +3,12 @@ package fr.bde_tribu_terre.discord.mcbot.command.impl;
 import fr.bde_tribu_terre.discord.mcbot.bdd.Bdd;
 import fr.bde_tribu_terre.discord.mcbot.command.outils.CommandAction;
 import fr.bde_tribu_terre.discord.mcbot.structures.Rectangle;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import javax.annotation.Nonnull;
 
 public class Surface extends CommandAction {
-    public Surface(@Nonnull final SlashCommandEvent event, @Nonnull final Bdd bdd) {
+    public Surface(@Nonnull final SlashCommandInteractionEvent event, @Nonnull final Bdd bdd) {
         super(event, bdd);
     }
 

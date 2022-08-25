@@ -6,7 +6,7 @@ import fr.bde_tribu_terre.discord.mcbot.couleur.MinecraftColor;
 import fr.bde_tribu_terre.discord.mcbot.couleur.NotDefaultMinecraftColorException;
 import fr.bde_tribu_terre.discord.mcbot.structures.Equipe;
 import fr.bde_tribu_terre.discord.mcbot.structures.Joueur;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import javax.annotation.Nonnull;
 import java.sql.SQLException;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Modifier extends CommandAction {
-    public Modifier(@Nonnull final SlashCommandEvent event, @Nonnull final Bdd bdd) {
+    public Modifier(@Nonnull final SlashCommandInteractionEvent event, @Nonnull final Bdd bdd) {
         super(event, bdd);
     }
 

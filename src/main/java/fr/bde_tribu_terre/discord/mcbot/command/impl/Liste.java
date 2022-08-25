@@ -3,13 +3,13 @@ package fr.bde_tribu_terre.discord.mcbot.command.impl;
 import fr.bde_tribu_terre.discord.mcbot.bdd.Bdd;
 import fr.bde_tribu_terre.discord.mcbot.command.outils.CommandAction;
 import fr.bde_tribu_terre.discord.mcbot.structures.Equipe;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import javax.annotation.Nonnull;
 import java.sql.SQLException;
 
 public class Liste extends CommandAction {
-    public Liste(@Nonnull final SlashCommandEvent event, @Nonnull final Bdd bdd) {
+    public Liste(@Nonnull final SlashCommandInteractionEvent event, @Nonnull final Bdd bdd) {
         super(event, bdd);
     }
 

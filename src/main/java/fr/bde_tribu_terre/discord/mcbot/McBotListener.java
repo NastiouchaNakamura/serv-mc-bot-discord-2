@@ -6,7 +6,7 @@ import fr.bde_tribu_terre.discord.mcbot.bdd.BddBuilder;
 import fr.bde_tribu_terre.discord.mcbot.command.impl.*;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.events.ReadyEvent;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import javax.annotation.Nonnull;
 
@@ -31,7 +31,7 @@ public class McBotListener extends AbstractBaseListener {
         this.log("[ERROR] " + message);
     }
 
-    public void logCommand(@Nonnull final SlashCommandEvent event) {
+    public void logCommand(@Nonnull final SlashCommandInteractionEvent event) {
         StringBuilder stringBuilder = new StringBuilder();
 
         stringBuilder.append("[COMMAND] ");
@@ -84,7 +84,7 @@ public class McBotListener extends AbstractBaseListener {
     }
 
     @Override
-    public void onSlashCommand(@Nonnull SlashCommandEvent event) {
+    public void onSlashCommandInteraction(@Nonnull SlashCommandInteractionEvent event) {
         try (Bdd bdd = this.bddBuilder.buildBdd()) {
             this.logCommand(event);
 

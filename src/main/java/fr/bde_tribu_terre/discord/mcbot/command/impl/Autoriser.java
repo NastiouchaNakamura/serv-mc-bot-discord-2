@@ -5,7 +5,7 @@ import fr.bde_tribu_terre.discord.mcbot.command.outils.CommandAction;
 import fr.bde_tribu_terre.discord.mcbot.structures.Equipe;
 import fr.bde_tribu_terre.discord.mcbot.structures.Joueur;
 import net.dv8tion.jda.api.entities.User;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import javax.annotation.Nonnull;
 import java.sql.SQLException;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Autoriser extends CommandAction {
-    public Autoriser(@Nonnull final SlashCommandEvent event, @Nonnull final Bdd bdd) {
+    public Autoriser(@Nonnull final SlashCommandInteractionEvent event, @Nonnull final Bdd bdd) {
         super(event, bdd);
     }
 

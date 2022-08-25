@@ -130,11 +130,11 @@ public class Equipe {
         usersARetirer.removeAll(nouveauxUsers);
 
         for (User user : usersAAjouter) {
-            serveur.addRoleToMember(user.getId(), role).queue();
+            serveur.addRoleToMember(user, role).queue();
         }
 
         for (User user : usersARetirer) {
-            serveur.removeRoleFromMember(user.getId(), role).queue();
+            serveur.removeRoleFromMember(user, role).queue();
         }
     }
 

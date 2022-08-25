@@ -6,13 +6,13 @@ import fr.bde_tribu_terre.discord.mcbot.fonctions.Fonctions;
 import fr.bde_tribu_terre.discord.mcbot.structures.Equipe;
 import fr.bde_tribu_terre.discord.mcbot.structures.Joueur;
 import fr.bde_tribu_terre.discord.mcbot.structures.Rectangle;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import javax.annotation.Nonnull;
 import java.sql.SQLException;
 
 public class Redefinir extends CommandAction {
-    public Redefinir(@Nonnull final SlashCommandEvent event, @Nonnull final Bdd bdd) {
+    public Redefinir(@Nonnull final SlashCommandInteractionEvent event, @Nonnull final Bdd bdd) {
         super(event, bdd);
     }
 

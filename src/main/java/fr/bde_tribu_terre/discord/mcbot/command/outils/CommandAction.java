@@ -2,19 +2,19 @@ package fr.bde_tribu_terre.discord.mcbot.command.outils;
 
 import fr.bde_tribu_terre.discord.mcbot.bdd.Bdd;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.events.interaction.SlashCommandEvent;
+import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import javax.annotation.Nonnull;
 import java.awt.*;
 
 public abstract class CommandAction {
     // Attributs
-    private final SlashCommandEvent event;
+    private final SlashCommandInteractionEvent event;
     private final Bdd bdd;
 
     // Constructeurs
     public CommandAction(
-            @Nonnull final SlashCommandEvent event,
+            @Nonnull final SlashCommandInteractionEvent event,
             @Nonnull final Bdd bdd
     ) {
         this.event = event;
@@ -22,7 +22,7 @@ public abstract class CommandAction {
     }
 
     // Getteurs
-    public SlashCommandEvent getEvent() {
+    public SlashCommandInteractionEvent getEvent() {
         return this.event;
     }
 

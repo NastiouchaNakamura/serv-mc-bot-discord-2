@@ -2,6 +2,7 @@ package fr.bde_tribu_terre.discord.mcbot.structures;
 
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.UserSnowflake;
 
 import javax.annotation.Nonnull;
 import java.util.Objects;
@@ -10,12 +11,18 @@ public class Joueur {
     // Attributs
     private final String uuid;
     private final String username;
-    private final String discordId;
+    private final UserSnowflake discordId;
     private String discordTag;
     private User discordUser;
 
     // Constructeurs
     public Joueur(String uuid, String username, String discordId) {
+        this.uuid = uuid;
+        this.username = username;
+        this.discordId = UserSnowflake.fromId(discordId);
+    }
+
+    public Joueur(String uuid, String username, UserSnowflake discordId) {
         this.uuid = uuid;
         this.username = username;
         this.discordId = discordId;
@@ -30,7 +37,7 @@ public class Joueur {
         return this.username;
     }
 
-    public String getDiscordId() {
+    public UserSnowflake getDiscordId() {
         return this.discordId;
     }
 
@@ -43,9 +50,9 @@ public class Joueur {
 
     public User getUser(@Nonnull JDA jda) {
         if (this.discordUser == null) {
-            this.discordUser = jda.getUserById(this.getDiscordId());
+            this.discordUser = jda.getUserById(this.getDiscordId().getId());
             if (this.discordUser == null) {
-                this.discordUser = jda.retrieveUserById(this.getDiscordId()).complete();
+                this.discordUser = jda.retrieveUserById(this.getDiscordId().getId()).complete();
             }
         }
         return this.discordUser;
